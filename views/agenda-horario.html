@@ -1,5 +1,27 @@
 <h1>Agendando horário!</h1>
 
-<fieldset legend="Agendar novo horário"></fieldset>
+<fieldset>
+    <legend>Cadastrar barbearia</legend>
+    <form action="/agenda-horario" method="post" >
+        <label for="cliente">Seu nome</label>
+        <input type="text"  name="cliente" value="Rodolfo"> 
+        <br/>
+        <label for="data">Data</label>
+        <input type="date" name="data" value="2023-12-01">
+        <br/>
+        <label for="barberShop">Barbearia</label>
+        <select name="barberShop" id="">
+            <option value="Guga barberShop">Guga barberShop</option>
+            <option value="Dolfins barberShop" selected>Dolfins barberShop</option>
+            <option value="José StyleHair">José StyleHair</option>
+        </select>
+        <br/>
+        <label for="barberShop">Horário</label>
+        <input type="time" name="hora" min="09:00" max="20:00" value="15:00">
+        <br/>
+        <br/>
+        <button type="submit" class="btn-submit">Agendar</button>
+    </form>
+</fieldset>
 
 <a href="/"><button>Inicio</button></a>

@@ -1,7 +1,7 @@
 const connection = require('../connect.js');
 const Sequelize = require('sequelize')
 
-const babershopsDetails = connection.define('babershops_details', {
+const barbershopsDetails = connection.define('barbershops_details', {
     descricao: {
         type: Sequelize.STRING
     },
@@ -18,6 +18,6 @@ const babershopsDetails = connection.define('babershops_details', {
     freezeTableName: true
 });
 
-babershopsDetails.sync()
+/*barbershopsDetails.sync()
     .then( () => {console.log('babershopsDetails table has been synced');})
-    .catch( (err) => {console.log(err)});
+    .catch( (err) => {console.log(err)});*/
