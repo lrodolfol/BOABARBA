@@ -30,6 +30,7 @@ router.get('/agenda-horario', function (req, res) {
     res.sendFile(path.resolve() + '/views/agenda-horario.html');
 });
 router.post('/agenda-horario', async function (req, res) {
+    console.log(req.body);
     var requisicao = req.body;
     var schedule = new ScheculeModel(requisicao);
     var response = await schedule.register();

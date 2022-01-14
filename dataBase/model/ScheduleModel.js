@@ -1,4 +1,5 @@
-const schedule = require('../tables/schedule'); //TABELA SEQUELIZE BARBERSOP
+const schedule = require('../tables/schedule'); //TABELA SEQUELIZE SCHEDULE
+const barberShopModel = require('../tables/barberShops'); //TABELA SEQUELIZE BARBERSHOP
 
 class ScheduleModel {
 
@@ -9,21 +10,12 @@ class ScheduleModel {
         this.cliente = cliente;
     }
 
-    async register(){
-        return barberShop.create({nome: this.nome})
-         .then(function(success){
-             return 'success';
-         })
-         .catch(function(err){
-             return err.message;
-         });       
-      }
-
     async register() {
+        var codBarbershop = await this.selectBaberShop(this.barbershop);
         return schedule.create({
             data_hora: this.data + ' ' + this.hora,
             cliente: this.cliente,
-            codigo_barbershop: 1 //NECESSÁRIO FAZER UM SELECT PARA PEGAR O ID DO BARBERSHOP, POIS ESTA VINDO O NOME DELA
+            codigo_barbershop: codBarbershop //NECESSÁRIO FAZER UM SELECT PARA PEGAR O ID DO BARBERSHOP, POIS ESTA VINDO O NOME DELA
         })
             .then(function (success) {
                 return 'success';
@@ -32,6 +24,20 @@ class ScheduleModel {
                 return err.message;
             });
     }
+
+    async selectBaberShop(nome) {
+        var idBaberShop = await barberShopModel.findOne({where: {
+            nome: nome
+        }});
+
+        if(! idBaberShop) {
+            throw new Error('Não foi encontrado a barbearia')
+        }
+
+return idBaberShop.id;
+
+    }
+
 }
 
 module.exports = ScheduleModel;
