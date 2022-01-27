@@ -17,6 +17,7 @@ const schedule = connection.define('schedule', {
 
 module.exports = schedule;
 
-/*schedule.sync()
+/*
+schedule.sync()
     .then( () => {console.log('schedule table has been synced');})
     .catch( (err) => {console.log(err)});*/
