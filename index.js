@@ -16,6 +16,6 @@ app.use('/', router);
 app.use((erro, req, res, middleware) => {
     if(erro instanceof DadosInvalidos) {
         const dadosInvalidos = erro.camposInvalidos;
-        res.send('Dados Inválidos: ' + dadosInvalidos);
+        res.send('Dados Inválidos no cadastro: ' + JSON.stringify(dadosInvalidos));
     }
 });
